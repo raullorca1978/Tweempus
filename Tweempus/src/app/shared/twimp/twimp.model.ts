@@ -1,18 +1,18 @@
 import { Author } from "../author/author.model";
 
 export class Twimp {
-    private _id: string;
-    public get id(): string {
+    private _id: any;
+    public get id(): any {
         return this._id;
     }
-    public set id(value: string) {
+    public set id(value: any) {
         this._id = value;
     }
-    private _url: string;
-    public get url(): string {
+    private _url: any;
+    public get url(): any {
         return this._url;
     }
-    public set url(value: string) {
+    public set url(value: any) {
         this._url = value;
     }
     private _author: Author;
@@ -36,15 +36,17 @@ export class Twimp {
     public set timestamp(value: string) {
         this._timestamp = value;
     }
-    // private _favorite: boolean;
-    // public get favorite_1(): boolean {
-    //     return this._favorite;
-    // }
-    // public set favorite_1(value: boolean) {
-    //     this._favorite = value;
-    // }
 
-    constructor(id: string, url: string, author: Author, content: string, timestamp: string){ //,favorite?: boolean) {
+    //comentar
+    private _favorite: boolean=true;
+    public get favorite_1(): boolean {
+        return this._favorite;
+    }
+    public set favorite_1(value: boolean) {
+        this._favorite = value;
+    }
+
+    constructor(id: any, url: string, author: Author, content: string, timestamp: string ,favorite?: boolean) {
         this._id = id;
         this._url = url;
         this._author = author;

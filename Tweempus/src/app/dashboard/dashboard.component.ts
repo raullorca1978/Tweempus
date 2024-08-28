@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthorService } from '../shared/author/author.service';
+import { Twimp } from '../shared/twimp/twimp.model';
+import { TwimpService } from '../shared/twimp/twimp.service';
 
 @Component({
   selector: 'tweempus-dashboard',
@@ -7,13 +9,17 @@ import { AuthorService } from '../shared/author/author.service';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent  implements OnInit{
+
+  twimpList: Twimp[] =[];
+
   constructor(
-    private authorService: AuthorService
+    private authorService: AuthorService,
+    private twimpService: TwimpService
 
   ){}
 
   ngOnInit(){
-    this.authorService.getAuthor(`1`).subscribe(author => console.log(author))
+    this.twimpService.getTwimps().subscribe(twimps => this.twimpList = twimps);
   }
 
 }
