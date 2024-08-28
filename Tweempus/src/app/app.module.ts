@@ -8,6 +8,7 @@ import { CoreModule } from './core/core.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LoginModule } from './login/login.module';
 import { ProfileModule } from './profile/profile.module';
+import { provideHttpClient } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { ProfileModule } from './profile/profile.module';
     LoginModule,
     ProfileModule
   ],
-  providers: [],
+  providers: [provideHttpClient()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
