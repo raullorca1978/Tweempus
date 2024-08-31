@@ -34,11 +34,17 @@ export class TwimpService {
 
 getFavoritesByAuthor(idAuthor: string, idTwimp: string): Observable<boolean>{
   return this.httpClient.get(this.urlFavorite + '/'+ idAuthor).pipe(
-    map(response => true),
-    catchError(this.handleError)
-  );
-  
-}
+    map((response: any) => {
+      let favorites: string[] = response['twimps'];
+      if(favorites.indexOf(idTwimp ) == -1){
+        return false
+      }else
+        return true
+      }),
+      catchError(this.handleError)
+    );
+
+  }
 
 
 handleError(error: any){
