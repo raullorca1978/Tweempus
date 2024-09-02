@@ -14,6 +14,7 @@ export class LoginComponent   {
 
   logIn(){
     this.authService.login('1');
+    window.localStorage.setItem('login','1' )
   }
  
 

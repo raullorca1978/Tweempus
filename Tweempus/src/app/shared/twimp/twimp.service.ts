@@ -10,6 +10,7 @@ import { Author } from '../author/author.model';
 export class TwimpService {
   private url: string='http://localhost:3000/twimps';
   private urlFavorite: string= 'http://localhost:3000/author-favorites';
+  private urlTwimps: string='http://localhost:3000/twimps';
 
   constructor(
     private httpClient: HttpClient
@@ -54,4 +55,23 @@ handleError(error: any){
   return  throwError(()=> erroMsg)
 }
 
+setFavoriteTwimps(idAuthor:string, dbTwimpList: any): Observable<any>{
+  let dbFavoriteTwimps: any={
+    'id': idAuthor,
+    'twimps': dbTwimpList 
+  };
+  return this.httpClient.put(this.urlTwimps +'/'+ idAuthor, dbFavoriteTwimps).pipe(
+    catchError(this.handleError)
+  );
+}
+
+borrarFavoriteTwimps(idAuthor:string, dbTwimpList: any): Observable<any>{
+  let dbFavoriteTwimps: any={
+    'id': idAuthor,
+    'twimps': dbTwimpList 
+  };
+  return this.httpClient.delete(this.urlTwimps +'/'+ idAuthor, dbFavoriteTwimps).pipe(
+    catchError(this.handleError)
+  );
+}
 }
