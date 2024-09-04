@@ -1,8 +1,8 @@
 export class Token {
   private _key: string;
-  private _idAuthor: string;
+  private _idAuthor: any;
 
-  constructor(key: string, idAuthor: string) {
+  constructor(key: string, idAuthor: any) {
       this._key = key;
       this._idAuthor = idAuthor;
   }
@@ -11,7 +11,7 @@ export class Token {
       return this._key;
   }
 
-  get idAuthor(): string {
+  get idAuthor(): any {
       return this._idAuthor;
   }
 
@@ -19,7 +19,7 @@ export class Token {
       this._key = key;
   }
 
-  set idAuthor(idAuthor: string) {
+  set idAuthor(idAuthor: any) {
       this._idAuthor = idAuthor;
   }
 }

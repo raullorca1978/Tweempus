@@ -4,6 +4,7 @@ import { Twimp } from '../shared/twimp/twimp.model';
 import { TwimpService } from '../shared/twimp/twimp.service';
 import { Observable,from } from 'rxjs';
 import 'rxjs/add/observable/from';
+import { AuthenticationService } from '../core/authentication.service';
 
 @Component({
   selector: 'tweempus-dashboard',
@@ -16,7 +17,8 @@ export class DashboardComponent  implements OnInit{
 
   constructor(
     private authorService: AuthorService,
-    private twimpService: TwimpService
+    private twimpService: TwimpService,
+    private authService: AuthenticationService
 
   ){}
 
@@ -26,7 +28,7 @@ export class DashboardComponent  implements OnInit{
       from(twimps).subscribe(twimp =>{
         this.authorService.getAuthor(twimp.author.id).subscribe(author =>{
           twimp.author=author;
-          this.twimpService.getFavoritesByAuthor('1', twimp.id).subscribe(favorite=>{
+          this.twimpService.getFavoritesByAuthor(this.authService.token?.idAuthor, twimp.id).subscribe(favorite=>{
             twimp.favorite_1=favorite;
             this.twimpList.push(twimp);
           });
