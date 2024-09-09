@@ -74,4 +74,18 @@ borrarFavoriteTwimps(idAuthor:string, dbTwimpList: any): Observable<any>{
     catchError(this.handleError)
   );
 }
+
+setTwimp(twimp: Twimp): Observable<any> {
+  let dbTwimp: any = {
+    'id': twimp.id,
+    'author': twimp.author.id,
+    'by': twimp.author.fullName,
+    'content': twimp.content,
+    'timestamp': twimp.timestamp
+  };
+
+  return this.httpClient.post(this.url, dbTwimp).pipe(
+    catchError(this.handleError)
+  );
+}
 }
