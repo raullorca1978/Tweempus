@@ -8,12 +8,12 @@ import { ErrorComponent } from '../error/error.component';
 
 const profileRoutes: Routes = [
     { 
-        path: 'profile',
+        path: 'profile/:id',
         component: ProfileComponent,
         children: [
              {
                  path: '',
-                 redirectTo : '/profile/my-twimps',
+                 redirectTo : 'my-twimps',
                  pathMatch: 'full'
              },
             {
